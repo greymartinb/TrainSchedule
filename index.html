@@ -183,7 +183,13 @@ database.ref().on("child_added", function(snapshot) {
        console.log(1);
     };
 
-
+// minutesAway equals the rounded number of the duration of the difference between the next arrival and the current moment
+//(moment.duration specifies its a length of time 
+//diff specifies the amount of time 
+//moment(nextArrival, "HH:mm a" doesn't format the time really, it tells the moment js libarary where the hours and the minutes are, 
+//moment(), "HH:mm a") does the same thing, look in this spot in the object for the hours 
+//example "12:19 pm", the function reads as HH:mm a to tell where the hours are in the string, or the 12: and the minutes as 19 and the pm as after noon
+//as minutes just say the duration of time measures need to be displayed as the sum of minutes
 var minutesAway = Math.ceil(moment.duration(moment(nextArrival, "HH:mm a").diff(moment(), "HH:mm a")).asMinutes());
 
 console.log(minutesAway);
